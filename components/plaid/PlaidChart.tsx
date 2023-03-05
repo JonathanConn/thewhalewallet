@@ -61,7 +61,6 @@ export const data = {
 export function PlaidChart({ user }: { user: IUser }) {
   return (
     <div>
-
       {user._id === undefined ? (
         <p className='text-m'>Loading...</p>
       ) : (

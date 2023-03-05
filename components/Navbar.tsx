@@ -12,11 +12,6 @@ export default function Navbar() {
                         </div>
                     </label>
             </div>
-            <div className="flex-1" onClick={() => {
-                router.push("/")
-            }}>
-                <a className="btn btn-ghost normal-case text-l text-sky-700">WhaleWallet</a>
-            </div>
             <div className="flex-1">
                 <DynamicWidget />
             </div>
