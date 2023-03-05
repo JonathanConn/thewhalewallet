@@ -13,6 +13,7 @@ import { Line } from 'react-chartjs-2';
 import { faker } from '@faker-js/faker';
 import IUser from '../types/IUser';
 import PlaidDisplay from './PlaidDisplay';
+import { useUserContext } from '@/components/context/UserProvider';
 
 ChartJS.register(
   CategoryScale,
@@ -58,10 +59,12 @@ export const data = {
   ],
 };
 
-export function PlaidChart({ user }: { user: IUser }) {
+export function PlaidChart() {
+  const user = useUserContext().userContext;
+
   return (
     <div>
-      {user._id === undefined ? (
+      { user === undefined ? (
         <p className='text-m'>Loading...</p>
       ) : (
         <div>

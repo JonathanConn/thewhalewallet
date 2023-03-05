@@ -1,9 +1,5 @@
 import axios, { AxiosResponse } from "axios";
 import IWallet from "../types/IWallet";
-import { 
-    getLensProfileByWalletAddress,
-    getEnsByWalletAddress
-} from "./wallet.service";
 
 export async function OnLinkSuccessCallback(args: any) {
 
@@ -13,17 +9,11 @@ export async function OnLinkSuccessCallback(args: any) {
 
     let wallets: IWallet[] = [];
     for (let i = 0; i < res.data.count; i++) {
-        
-        let address = res.data.wallets[i].publicKey;
-        let lens = await getLensProfileByWalletAddress(address);
-        let ens = await getEnsByWalletAddress(address);
-
         wallets.push({
                 name: res.data.wallets[i].name,
-                address: address,
+                address: res.data.wallets[i].publicKey,
                 isFavorite: false,
-                ens: ens,
-                lens: lens,
+                ens: args.user.ens,
         } as IWallet);
     }
     console.log(wallets);
